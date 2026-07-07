@@ -37,7 +37,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button title="Login" />
+        <Link to="/my-animes" className="w-full">
+          <Button title="Login" />
+        </Link>
         <Link to="/register" className="w-full">
           <Button title="Não tenho uma conta" variant="outline" />
         </Link>
