@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "../components/Input";
+import Input from "../components/ui/Input";
 import { Link, useNavigate } from "react-router";
-import Button from "../components/Button";
+import Button from "../components/ui/Button";
 import { loginUser } from "../services/authApi";
 
 const Login = () => {

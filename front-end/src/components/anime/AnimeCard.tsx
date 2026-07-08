@@ -1,10 +1,10 @@
-import type { Anime } from "../types/Anime"
+import type { Anime } from "../../types/Anime"
 
 interface CardProps {
   anime: Anime;
 }
 
-const Card = ({ anime }: CardProps) => {
+const AnimeCard = ({ anime }: CardProps) => {
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-lg transition hover:scale-105">
       <img
@@ -25,4 +25,4 @@ const Card = ({ anime }: CardProps) => {
   );
 };
 
-export default Card;
+export default AnimeCard;

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { UserAnime } from "../types/UserAnime";
+import type { UserAnime } from "../../types/User";
 
 interface UserAnimeCardProps {
   anime: UserAnime;

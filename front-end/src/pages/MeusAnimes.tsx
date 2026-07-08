@@ -1,23 +1,36 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import Button from "../components/Button";
-import UserAnimeCard from "../components/UserAnimeCard";
-import { listarAnimes } from "../services/fakeApi";
-import type { UserAnime } from "../types/UserAnime";
-import { excluirAnime } from "../services/fakeApi";
-import Header from "../components/Header";
+import Button from "../components/ui/Button";
+import UserAnimeCard from "../components/anime/UserAnimeCard";
+import { listarAnimes, excluirAnime } from "../services/animeApi";
+import type { UserAnime } from "../types/User";
+import Header from "../components/layout/Header";
 
-const MyAnimes = () => {
+const MeusAnimes = () => {
   const [animes, setAnimes] = useState<UserAnime[]>([]);
 
   useEffect(() => {
-    const dados = listarAnimes();
-    setAnimes(dados);
+    const carregarAnimes = async () => {
+      const dados = await listarAnimes();
+      setAnimes(dados);
+    };
+
+    carregarAnimes();
   }, []);
 
-  const handleDeleteAnime = (id: number) => {
-    const novosAnimes = excluirAnime(id);
-    setAnimes(novosAnimes);
+  const handleDeleteAnime = async (id: number) => {
+    try {
+      await excluirAnime(id);
+
+      const dados = await listarAnimes();
+      setAnimes(dados);
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Erro ao excluir anime.");
+      }
+    }
   };
 
   return (
@@ -49,4 +62,4 @@ const MyAnimes = () => {
   );
 };
 
-export default MyAnimes;
+export default MeusAnimes;

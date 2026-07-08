@@ -1,4 +1,4 @@
-import GridCard from "../components/GridCard";
+import AnimeGrid from "../components/anime/AnimeGrid";
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
         Top animes de 2026
       </div>
 
-      <GridCard />
+      <AnimeGrid />
     </div>
   );
 };

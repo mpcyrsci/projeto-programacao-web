@@ -1,10 +1,10 @@
 import { createUser } from "../services/authApi";
 import { useState } from "react";
-import Input from "../components/Input";
+import Input from "../components/ui/Input";
 import { Link } from "react-router";
-import Button from "../components/Button";
+import Button from "../components/ui/Button";
 
-const Register = () => {
+const Cadastro = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -79,4 +79,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Cadastro;

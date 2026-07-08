@@ -1,17 +1,17 @@
 import { createBrowserRouter, Outlet } from "react-router";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import MyAnimes from "./pages/MyAnimes";
+import Register from "./pages/Cadastro";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import MyAnimes from "./pages/MeusAnimes";
 import NovoAnime from "./pages/NovoAnime";
 import EditarAnime from "./pages/EditarAnime";
 
 const Layout = () => {
   return (
     <div className="flex min-h-screen flex-col bg-[#030101]">
-      <Header title="Entrar" route="/login"/>
+      <Header title="Entrar" route="/login" />
       <Outlet />
       <Footer />
     </div>
