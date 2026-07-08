@@ -10,21 +10,21 @@ interface AnimeFormProps {
 }
 
 const AnimeForm = ({ onSubmit, initialData }: AnimeFormProps) => {
-  const [title, setTitle] = useState(initialData?.title ?? "");
-  const [imageUrl, setImageUrl] = useState(initialData?.imageUrl ?? "");
-  const [score, setScore] = useState(initialData?.score?.toString() ?? "");
-  const [episodes, setEpisodes] = useState(
-    initialData?.episodes?.toString() ?? "",
-  );
+  const [titulo, setTitulo] = useState(initialData?.titulo ?? "");
+  const [imagem, setImagem] = useState(initialData?.imagem ?? "");
+  const [genero, setGenero] = useState(initialData?.genero ?? "");
+  const [ano, setAno] = useState(initialData?.ano ?? "");
+  const [nota, setNota] = useState(initialData?.nota?.toString() ?? "");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     onSubmit({
-      title,
-      imageUrl,
-      score: Number(score),
-      episodes: Number(episodes),
+      titulo,
+      imagem,
+      genero,
+      ano,
+      nota: Number(nota),
     });
   };
 
@@ -47,26 +47,36 @@ const AnimeForm = ({ onSubmit, initialData }: AnimeFormProps) => {
         <Input
           placeholder="Título"
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
         />
+
         <Input
           placeholder="URL da imagem"
           type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          value={imagem}
+          onChange={(e) => setImagem(e.target.value)}
         />
+
+        <Input
+          placeholder="Gênero"
+          type="text"
+          value={genero}
+          onChange={(e) => setGenero(e.target.value)}
+        />
+
+        <Input
+          placeholder="Ano"
+          type="text"
+          value={ano}
+          onChange={(e) => setAno(e.target.value)}
+        />
+
         <Input
           placeholder="Nota"
           type="number"
-          value={score}
-          onChange={(e) => setScore(e.target.value)}
-        />
-        <Input
-          placeholder="Número de episódios"
-          type="number"
-          value={episodes}
-          onChange={(e) => setEpisodes(e.target.value)}
+          value={nota}
+          onChange={(e) => setNota(e.target.value)}
         />
 
         <Button title="Salvar Anime" />

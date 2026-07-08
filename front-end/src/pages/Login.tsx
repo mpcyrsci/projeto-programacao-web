@@ -1,16 +1,29 @@
 import { useState } from "react";
 import Input from "../components/Input";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "../components/Button";
+import { loginUser } from "../services/authApi";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
+
+    try {
+      await loginUser(email, password);
+
+      navigate("/my-animes");
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Erro ao fazer login.");
+      }
+    }
   }
 
   return (
@@ -21,25 +34,26 @@ const Login = () => {
       <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-[#D7D8D9] bg-[#D7D8D9] p-4">
         <Link to="/">
           <img
-            src="./logo.png"
+            src="/logo.png"
             alt="Logo do site."
             className="mb-4 h-50 w-58.25"
           />
         </Link>
+
         <Input
           placeholder="E-mail"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <Input
           placeholder="Senha"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Link to="/my-animes" className="w-full">
-          <Button title="Login" />
-        </Link>
+        <Button title="Login" />
+
         <Link to="/register" className="w-full">
           <Button title="Não tenho uma conta" variant="outline" />
         </Link>

@@ -11,8 +11,9 @@ export interface Anime {
 }
 
 export interface AnimeFormData {
-  title: string;
-  imageUrl: string;
-  score: number;
-  episodes: number;
+  titulo: string;
+  imagem: string;
+  genero: string;
+  ano: string;
+  nota: number;
 }

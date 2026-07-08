@@ -1,19 +1,33 @@
+import { createUser } from "../services/authApi";
 import { useState } from "react";
 import Input from "../components/Input";
 import { Link } from "react-router";
 import Button from "../components/Button";
 
 const Register = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [cep, setCep] = useState("");
 
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    console.log({ name, email, password, confirmPassword, cep });
+    if (password !== confirmPassword) {
+      alert("As senhas não coincidem.");
+      return;
+    }
+
+    try {
+      await createUser(email, password);
+
+      alert("Conta criada com sucesso!");
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Erro ao criar a conta.");
+      }
+    }
   }
 
   return (
@@ -30,11 +44,11 @@ const Register = () => {
           />
         </Link>
 
-        <Input
+        {/* <Input
           placeholder="Nome"
           type="text"
           onChange={(e) => setName(e.target.value)}
-        />
+        /> */}
         <Input
           placeholder="E-mail"
           type="email"
@@ -50,11 +64,11 @@ const Register = () => {
           type="password"
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <Input
+        {/* <Input
           placeholder="CEP"
           type="text"
           onChange={(e) => setCep(e.target.value)}
-        />
+        /> */}
 
         <Button title="Criar conta" />
         <Link to="/login" className="w-full">

@@ -1,7 +1,8 @@
 export interface UserAnime {
   id: number;
-  title: string;
-  imageUrl: string;
-  score: number;
-  episodes: number;
+  titulo: string;
+  imagem: string;
+  genero: string;
+  ano: string;
+  nota: number;
 }

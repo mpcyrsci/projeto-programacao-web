@@ -10,19 +10,23 @@ const UserAnimeCard = ({ anime, onDelete }: UserAnimeCardProps) => {
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-lg transition hover:scale-105">
       <img
-        src={anime.imageUrl}
-        alt={anime.title}
+        src={anime.imagem}
+        alt={anime.titulo}
         className="h-56 w-full object-cover sm:h-72"
       />
 
       <div className="p-4">
         <h2 className="line-clamp-2 text-base font-bold sm:text-lg">
-          {anime.title}
+          {anime.titulo}
         </h2>
 
         <div className="mt-3 flex justify-between text-sm text-gray-600">
-          <span>⭐ {anime.score ?? "-"}</span>
-          <span>{anime.episodes ?? "?"} episódios</span>
+          <span>{anime.genero}</span>
+          <span>{anime.ano}</span>
+        </div>
+
+        <div className="mt-2 text-sm text-gray-600">
+          <span>⭐ {anime.nota ?? "-"}</span>
         </div>
 
         <div className="mt-5 flex flex-col gap-2 sm:flex-row">
