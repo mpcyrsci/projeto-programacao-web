@@ -11,7 +11,7 @@ import EditarAnime from "./pages/EditarAnime";
 const Layout = () => {
   return (
     <div className="flex min-h-screen flex-col bg-[#030101]">
-      <Header />
+      <Header title="Entrar" route="/login"/>
       <Outlet />
       <Footer />
     </div>

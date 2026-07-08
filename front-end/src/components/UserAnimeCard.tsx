@@ -12,27 +12,29 @@ const UserAnimeCard = ({ anime, onDelete }: UserAnimeCardProps) => {
       <img
         src={anime.imageUrl}
         alt={anime.title}
-        className="h-72 w-full object-cover"
+        className="h-56 w-full object-cover sm:h-72"
       />
 
       <div className="p-4">
-        <h2 className="line-clamp-2 text-lg font-bold">{anime.title}</h2>
+        <h2 className="line-clamp-2 text-base font-bold sm:text-lg">
+          {anime.title}
+        </h2>
 
         <div className="mt-3 flex justify-between text-sm text-gray-600">
           <span>⭐ {anime.score ?? "-"}</span>
           <span>{anime.episodes ?? "?"} episódios</span>
         </div>
 
-        <div className="mt-5 flex gap-2">
+        <div className="mt-5 flex flex-col gap-2 sm:flex-row">
           <Link to={`/editar-anime/${anime.id}`} className="flex-1">
-            <button className="w-full rounded-lg bg-blue-600 py-2 font-medium text-white transition hover:bg-blue-700">
+            <button className="w-full cursor-pointer rounded-lg bg-blue-600 py-2 font-medium text-white transition hover:bg-blue-700">
               Editar
             </button>
           </Link>
 
           <button
             onClick={() => onDelete(anime.id)}
-            className="flex-1 rounded-lg bg-red-600 py-2 font-medium text-white transition hover:bg-red-700"
+            className="flex-1 cursor-pointer rounded-lg bg-red-600 py-2 font-medium text-white transition hover:bg-red-700"
           >
             Excluir
           </button>
